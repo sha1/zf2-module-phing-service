@@ -88,6 +88,9 @@ class PhingService
 
         $builder->setPrefix($this->options->getPhingBin());
         $builder->setArguments($options->toArgumentsArray());
+        
+        // Workaround: Disable process timeouts.
+        $builder->setTimeout(null);
 
         foreach (explode(' ', $targets) as $target) {
             if (strlen(trim($target))) {
